@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Livestock Food Prediction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Livestock Food Prediction</p>
+        <h1>Livestock Food Prediction</h1>
+        <p class="subtitle">Estimate livestock production values with a clean, easy-to-read dashboard.</p>
+      </div>
+      <div class="status-pill">Live model ready</div>
+    </header>
+
+    <main class="content-grid">
+      <section class="card form-card">
+        <div class="card-header">
+          <div>
+            <p class="card-kicker">Input panel</p>
+            <h2>Prediction inputs</h2>
+          </div>
+          <div class="mini-badge">Live</div>
+        </div>
+        <form id="prediction-form">
+          <div class="field-row">
+            <label>Area
+              <select id="Area" name="Area" required>
+                <option value="">Select Area...</option>
+                {% for option in model_options['Area'] %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+              </select>
+            </label>
+            <label>Year
+              <input type="number" id="Year" name="Year" value="2020" min="1960" max="2050" step="1" required>
+            </label>
+          </div>
+          <button type="submit">Predict</button>
+        </form>
+      </section>
+
+      <section class="card result-card">
+        <div class="card-header">
+          <div>
+            <p class="card-kicker">Output panel</p>
+            <h2>Result</h2>
+          </div>
+        </div>
+        <div id="result-box" class="result-box">
+          <div class="placeholder-card">
+            <h3>Ready to score</h3>
+            <p class="muted">Submit the form to see the model output and confidence.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="chart-section">
+      <div class="card chart-card">
+        <div class="card-header">
+          <div>
+            <p class="card-kicker">Visualization</p>
+            <h2>Prediction analysis</h2>
+          </div>
+        </div>
+        <div id="chart-container" class="chart-container" style="display:none;">
+          <canvas id="prediction-chart"></canvas>
+        </div>
+        <div id="chart-placeholder" class="placeholder-card">
+          <h3>Charts will appear here</h3>
+          <p class="muted">Make predictions to see a visual summary of results.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}?v=20260617"></script>
+</body>
+</html>

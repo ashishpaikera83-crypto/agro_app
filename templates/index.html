@@ -40,6 +40,13 @@
                 {% endfor %}
               </select>
             </label>
+            <label>Item
+              <select id="Item" name="Item" required>
+                {% for option in model_options['Item'] %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+              </select>
+            </label>
             <label>Year
               <input type="number" id="Year" name="Year" value="2020" min="1960" max="2050" step="1" required>
             </label>

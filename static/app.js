@@ -24,7 +24,7 @@ if (form && resultBox) {
     // Build payload
     const payload = {
       Area: document.getElementById('Area')?.value || '',
-      Item: 'Asses',
+      Item: document.getElementById('Item')?.value || '',
       Element: 'Stocks',
       Year: Number(document.getElementById('Year')?.value || 2020),
       Unit: 'Head'
